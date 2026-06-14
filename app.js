@@ -79,6 +79,17 @@ const teamFlags = {
   "巴拿马": "pa"
 };
 
+const REPLAY_URL =
+  "https://www.xiaohongshu.com/discovery/item/6a2b3526000000000701093f?source=webshare&xhsshare=pc_web&xsec_source=pc_share";
+const ALL_MATCHES_URL = "https://www.xiaohongshu.com/worldcup26?wcup_source=web_sidebar_entry";
+
+const schedule = [
+  { time: "6月12日 03:00", title: "墨西哥主场轻取南非", stage: "小组赛 A组", a: "墨西哥", b: "南非", score: "2 : 0", replay: REPLAY_URL },
+  { time: "6月12日 10:00", title: "太极虎让一追二", stage: "小组赛 A组", a: "韩国", b: "捷克", score: "2 : 1", replay: REPLAY_URL },
+  { time: "6月13日 03:00", title: "拉林救主，加拿大逼平波黑", stage: "小组赛 B组", a: "加拿大", b: "波黑", score: "1 : 1", replay: REPLAY_URL },
+  { time: "6月13日 09:00", title: "巴洛贡梅开二度，美国大胜", stage: "小组赛 D组", a: "美国", b: "巴拉圭", score: "4 : 1", replay: REPLAY_URL }
+];
+
 const groups = [
   ["A", ["墨西哥", "南非", "韩国", "捷克"]],
   ["B", ["加拿大", "波黑", "卡塔尔", "瑞士"]],
@@ -328,8 +339,75 @@ function renderGroups() {
   );
 }
 
+function renderSchedule() {
+  const track = document.querySelector("#schedule-track");
+  if (!track) return;
+
+  const cards = schedule.map((m) => {
+    const card = document.createElement("article");
+    card.className = "sched-card";
+
+    const time = document.createElement("div");
+    time.className = "sched-time";
+    time.textContent = m.time;
+
+    const title = document.createElement("p");
+    title.className = "sched-title";
+    title.textContent = m.title;
+
+    const match = document.createElement("div");
+    match.className = "sched-match";
+    const score = document.createElement("div");
+    score.className = "sched-score";
+    const stage = document.createElement("span");
+    stage.className = "sched-stage";
+    stage.textContent = m.stage;
+    const num = document.createElement("strong");
+    num.textContent = m.score;
+    score.append(stage, num);
+    match.append(
+      createTeamBadge(m.a, "team-badge sched-team"),
+      score,
+      createTeamBadge(m.b, "team-badge sched-team")
+    );
+
+    const replay = document.createElement("a");
+    replay.className = "sched-replay";
+    replay.href = m.replay;
+    replay.target = "_blank";
+    replay.rel = "noreferrer";
+    replay.textContent = "查看回放";
+
+    card.append(time, title, match, replay);
+    return card;
+  });
+
+  const all = document.createElement("a");
+  all.className = "sched-card sched-all";
+  all.href = ALL_MATCHES_URL;
+  all.target = "_blank";
+  all.rel = "noreferrer";
+  const allIcon = document.createElement("span");
+  allIcon.className = "sched-all-icon";
+  allIcon.textContent = "📅";
+  const allTitle = document.createElement("strong");
+  allTitle.textContent = "全部赛程";
+  const allCount = document.createElement("small");
+  allCount.textContent = "104 场";
+  all.append(allIcon, allTitle, allCount);
+
+  track.replaceChildren(...cards, all);
+
+  const prev = document.querySelector("#sched-prev");
+  const next = document.querySelector("#sched-next");
+  const step = () => Math.max(track.clientWidth * 0.8, 280);
+  prev?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+  next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+}
+
 renderLabels();
 renderGroups();
+renderSchedule();
 
 const revealTargets = document.querySelectorAll(".reveal");
 if (revealTargets.length) {
