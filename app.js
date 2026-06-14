@@ -112,6 +112,7 @@ swapButton.addEventListener("click", () => {
 
 fields.teamA.addEventListener("input", renderLabels);
 fields.teamB.addEventListener("input", renderLabels);
+fields.stage.addEventListener("change", updateQuickMatchState);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();

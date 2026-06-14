@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>绿茵神算</title>
     <link rel="icon" href="/assets/brand/fifa-logo.png" />
-    <link rel="stylesheet" href="/styles.css?v=20260614-design" />
+    <link rel="stylesheet" href="/styles.css?v=20260614-apple-polish" />
   </head>
   <body>
     <main class="app-shell">
@@ -36,16 +36,18 @@
           </div>
 
           <form id="prediction-form" class="controls">
-            <label>
+            <label class="select-field">
               <span>比赛阶段</span>
-              <select id="stage" name="stage">
-                <option>小组赛</option>
-                <option>32 强</option>
-                <option>16 强</option>
-                <option>8 强</option>
-                <option>半决赛</option>
-                <option>决赛</option>
-              </select>
+              <div class="select-shell">
+                <select id="stage" name="stage">
+                  <option>小组赛</option>
+                  <option>32 强</option>
+                  <option>16 强</option>
+                  <option>8 强</option>
+                  <option>半决赛</option>
+                  <option>决赛</option>
+                </select>
+              </div>
             </label>
 
             <div class="team-grid">
@@ -221,6 +223,6 @@
       <option value="加纳"></option>
       <option value="巴拿马"></option>
     </datalist>
-    <script src="/app.js?v=20260614-design" type="module"></script>
+    <script src="/app.js?v=20260614-apple-polish" type="module"></script>
   </body>
 </html>
