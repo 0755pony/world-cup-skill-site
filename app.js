@@ -84,10 +84,30 @@ const REPLAY_URL =
 const ALL_MATCHES_URL = "https://www.xiaohongshu.com/worldcup26?wcup_source=web_sidebar_entry";
 
 const schedule = [
-  { time: "6月12日 03:00", title: "墨西哥主场轻取南非", stage: "小组赛 A组", a: "墨西哥", b: "南非", score: "2 : 0", replay: REPLAY_URL },
-  { time: "6月12日 10:00", title: "太极虎让一追二", stage: "小组赛 A组", a: "韩国", b: "捷克", score: "2 : 1", replay: REPLAY_URL },
-  { time: "6月13日 03:00", title: "拉林救主，加拿大逼平波黑", stage: "小组赛 B组", a: "加拿大", b: "波黑", score: "1 : 1", replay: REPLAY_URL },
-  { time: "6月13日 09:00", title: "巴洛贡梅开二度，美国大胜", stage: "小组赛 D组", a: "美国", b: "巴拉圭", score: "4 : 1", replay: REPLAY_URL }
+  { time: "6月12日 03:00", title: "墨西哥主场轻取南非", stage: "小组赛 A组", a: "墨西哥", b: "南非", status: "done", score: "2 : 0", replay: REPLAY_URL },
+  { time: "6月12日 10:00", title: "太极虎让一追二", stage: "小组赛 A组", a: "韩国", b: "捷克", status: "done", score: "2 : 1", replay: REPLAY_URL },
+  { time: "6月13日 03:00", title: "拉林救主，加拿大逼平波黑", stage: "小组赛 B组", a: "加拿大", b: "波黑", status: "done", score: "1 : 1", replay: REPLAY_URL },
+  { time: "6月13日 09:00", title: "巴洛贡梅开二度，美国大胜", stage: "小组赛 D组", a: "美国", b: "巴拉圭", status: "done", score: "4 : 1", replay: REPLAY_URL },
+  { time: "6月14日 03:00", title: "补时绝平，亚洲冠军逼平瑞士", stage: "小组赛 B组", a: "卡塔尔", b: "瑞士", status: "done", score: "1 : 1", replay: REPLAY_URL },
+  { time: "6月14日 06:00", title: "维尼修斯救主，巴西平摩洛哥", stage: "小组赛 C组", a: "巴西", b: "摩洛哥", status: "done", score: "1 : 1", replay: REPLAY_URL },
+  { time: "6月14日 09:00", title: "麦金一锤定音，风笛奏响", stage: "小组赛 C组", a: "海地", b: "苏格兰", status: "done", score: "0 : 1", replay: REPLAY_URL },
+  { time: "6月14日 12:00", title: "袋鼠军团赢下首胜", stage: "小组赛 D组", a: "澳大利亚", b: "土耳其", status: "done", score: "2 : 0", replay: REPLAY_URL },
+  { time: "6月15日 01:00", title: "德国战车首秀", stage: "小组赛 E组", a: "德国", b: "库拉索", status: "soon", subscribed: "88.2万" },
+  { time: "6月15日 04:00", title: "蓝武士首战荷兰", stage: "小组赛 F组", a: "荷兰", b: "日本", status: "soon", subscribed: "74.5万" },
+  { time: "6月15日 07:00", title: "非洲大象首秀", stage: "小组赛 E组", a: "科特迪瓦", b: "厄瓜多尔", status: "soon", subscribed: "49.4万" },
+  { time: "6月15日 10:00", title: "伊萨克携手哲凯赖什", stage: "小组赛 F组", a: "瑞典", b: "突尼斯", status: "soon", subscribed: "50.3万" },
+  { time: "6月16日 00:00", title: "欧洲杯冠军亮相", stage: "小组赛 H组", a: "西班牙", b: "佛得角", status: "soon", subscribed: "75.1万" },
+  { time: "6月16日 03:00", title: "欧洲红魔硬撼法老军团", stage: "小组赛 G组", a: "比利时", b: "埃及", status: "soon", subscribed: "51.6万" },
+  { time: "6月16日 06:00", title: "沙特绿鹰首战天蓝军团", stage: "小组赛 H组", a: "沙特", b: "乌拉圭", status: "soon", subscribed: "49.0万" },
+  { time: "6月16日 09:00", title: "波斯铁骑艰难迎来首战", stage: "小组赛 G组", a: "伊朗", b: "新西兰", status: "soon", subscribed: "49.9万" },
+  { time: "6月17日 03:00", title: "法国军团首秀", stage: "小组赛 I组", a: "法国", b: "塞内加尔", status: "soon", subscribed: "81.4万" },
+  { time: "6月17日 06:00", title: "哈兰德首秀，北欧海盗出击", stage: "小组赛 I组", a: "伊拉克", b: "挪威", status: "soon", subscribed: "70.5万" },
+  { time: "6月17日 09:00", title: "梅西领衔，卫冕冠军出战", stage: "小组赛 J组", a: "阿根廷", b: "阿尔及利亚", status: "soon", subscribed: "127.9万" },
+  { time: "6月17日 12:00", title: "音乐之国与历史文明的碰撞", stage: "小组赛 J组", a: "奥地利", b: "约旦", status: "soon", subscribed: "46.8万" },
+  { time: "6月18日 01:00", title: "C罗迎来第 6 届世界杯", stage: "小组赛 K组", a: "葡萄牙", b: "刚果金", status: "soon", subscribed: "114.9万" },
+  { time: "6月18日 04:00", title: "宿命对决，18 年半决赛重演", stage: "小组赛 L组", a: "英格兰", b: "克罗地亚", status: "soon", subscribed: "71.6万" },
+  { time: "6月18日 07:00", title: "非洲黑星冲击中美洲劲旅", stage: "小组赛 L组", a: "加纳", b: "巴拿马", status: "soon", subscribed: "46.3万" },
+  { time: "6月18日 10:00", title: "中亚白狼邂逅南美魔幻", stage: "小组赛 K组", a: "乌兹别克斯坦", b: "哥伦比亚", status: "soon", subscribed: "46.2万" }
 ];
 
 const groups = [
@@ -126,6 +146,31 @@ fields.teamA.addEventListener("input", renderLabels);
 fields.teamB.addEventListener("input", renderLabels);
 fields.stage.addEventListener("change", updateQuickMatchState);
 
+const tsSiteKey = document.querySelector('meta[name="turnstile-sitekey"]')?.content || "";
+const tsEnabled = tsSiteKey && !tsSiteKey.startsWith("__");
+let tsToken = null;
+let tsWidgetId = null;
+
+window.onloadTS = function () {
+  if (!tsEnabled || !window.turnstile) return;
+  const host = document.querySelector("#ts");
+  if (host) host.classList.add("is-active");
+  tsWidgetId = window.turnstile.render("#ts", {
+    sitekey: tsSiteKey,
+    theme: "light",
+    size: "flexible",
+    callback: (token) => {
+      tsToken = token;
+    },
+    "expired-callback": () => {
+      tsToken = null;
+    },
+    "error-callback": () => {
+      tsToken = null;
+    }
+  });
+};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -133,11 +178,18 @@ form.addEventListener("submit", async (event) => {
     stage: fields.stage.value.trim(),
     teamA: fields.teamA.value.trim(),
     teamB: fields.teamB.value.trim(),
-    notes: fields.notes.value.trim()
+    notes: fields.notes.value.trim(),
+    turnstileToken: tsToken
   };
 
   if (!payload.teamA || !payload.teamB) {
     setStatus("请填写球队", "error");
+    return;
+  }
+
+  if (tsEnabled && !tsToken) {
+    setStatus("请稍候", "error");
+    showError("人机验证还没就绪,稍等一两秒再点预测,或刷新页面。");
     return;
   }
 
@@ -164,6 +216,12 @@ form.addEventListener("submit", async (event) => {
     console.error("[predict]", error);
   } finally {
     setLoading(false);
+    if (tsEnabled && window.turnstile && tsWidgetId !== null) {
+      tsToken = null;
+      try {
+        window.turnstile.reset(tsWidgetId);
+      } catch {}
+    }
   }
 });
 
@@ -310,9 +368,10 @@ function setStatus(text, state = "") {
   statusEl.className = `status ${state}`.trim();
 }
 
-function showError() {
+function showError(message) {
   if (output.briefText) {
-    output.briefText.textContent = "预测没能生成,稍等片刻再试一次。如果多次失败,可能是网络或服务繁忙。";
+    output.briefText.textContent =
+      message || "预测没能生成,稍等片刻再试一次。如果多次失败,可能是网络或服务繁忙。";
     output.briefText.closest(".brief-panel")?.classList.add("is-error");
   }
 }
@@ -345,7 +404,7 @@ function renderSchedule() {
 
   const cards = schedule.map((m) => {
     const card = document.createElement("article");
-    card.className = "sched-card";
+    card.className = `sched-card ${m.status === "soon" ? "is-soon" : "is-done"}`;
 
     const time = document.createElement("div");
     time.className = "sched-time";
@@ -363,7 +422,7 @@ function renderSchedule() {
     stage.className = "sched-stage";
     stage.textContent = m.stage;
     const num = document.createElement("strong");
-    num.textContent = m.score;
+    num.textContent = m.status === "soon" ? "VS" : m.score;
     score.append(stage, num);
     match.append(
       createTeamBadge(m.a, "team-badge sched-team"),
@@ -371,14 +430,28 @@ function renderSchedule() {
       createTeamBadge(m.b, "team-badge sched-team")
     );
 
-    const replay = document.createElement("a");
-    replay.className = "sched-replay";
-    replay.href = m.replay;
-    replay.target = "_blank";
-    replay.rel = "noreferrer";
-    replay.textContent = "查看回放";
+    card.append(time, title, match);
 
-    card.append(time, title, match, replay);
+    if (m.status === "soon") {
+      const book = document.createElement("button");
+      book.type = "button";
+      book.className = "sched-book";
+      book.textContent = "预约预测";
+      book.addEventListener("click", () => bookMatch(m));
+      const count = document.createElement("small");
+      count.className = "sched-count";
+      count.textContent = `${m.subscribed} 已预约`;
+      card.append(book, count);
+    } else {
+      const replay = document.createElement("a");
+      replay.className = "sched-replay";
+      replay.href = m.replay;
+      replay.target = "_blank";
+      replay.rel = "noreferrer";
+      replay.textContent = "查看回放";
+      card.append(replay);
+    }
+
     return card;
   });
 
@@ -397,17 +470,90 @@ function renderSchedule() {
   all.append(allIcon, allTitle, allCount);
 
   track.replaceChildren(...cards, all);
+  setupSlider(track);
+}
 
+function setupSlider(track) {
   const prev = document.querySelector("#sched-prev");
   const next = document.querySelector("#sched-next");
-  const step = () => Math.max(track.clientWidth * 0.8, 280);
+  const step = () => Math.max(track.clientWidth * 0.85, 260);
+
+  const updateArrows = () => {
+    const max = track.scrollWidth - track.clientWidth - 2;
+    prev?.toggleAttribute("disabled", track.scrollLeft <= 0);
+    next?.toggleAttribute("disabled", track.scrollLeft >= max);
+  };
+
   prev?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
   next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+  track.addEventListener("scroll", updateArrows, { passive: true });
+  window.addEventListener("resize", updateArrows);
+  updateArrows();
+
+  // 鼠标拖拽滑动(触摸交给原生滚动)
+  let down = false;
+  let startX = 0;
+  let startScroll = 0;
+  let moved = false;
+
+  track.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") return;
+    down = true;
+    moved = false;
+    startX = event.clientX;
+    startScroll = track.scrollLeft;
+    track.classList.add("is-dragging");
+  });
+
+  window.addEventListener("pointermove", (event) => {
+    if (!down) return;
+    const dx = event.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+
+  window.addEventListener("pointerup", () => {
+    if (!down) return;
+    down = false;
+    track.classList.remove("is-dragging");
+  });
+
+  // 拖拽后吞掉误触点击
+  track.addEventListener(
+    "click",
+    (event) => {
+      if (moved) {
+        event.preventDefault();
+        event.stopPropagation();
+        moved = false;
+      }
+    },
+    true
+  );
+}
+
+function bookMatch(m) {
+  fields.teamA.value = m.a;
+  fields.teamB.value = m.b;
+  const stageName = m.stage.split(" ")[0];
+  if ([...fields.stage.options].some((o) => o.value === stageName)) {
+    fields.stage.value = stageName;
+  }
+  renderLabels();
+  document.querySelector("#predict")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  fields.notes.focus({ preventScroll: true });
 }
 
 renderLabels();
 renderGroups();
 renderSchedule();
+
+const siteNav = document.querySelector(".site-nav");
+if (siteNav) {
+  const onScroll = () => siteNav.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
 
 const revealTargets = document.querySelectorAll(".reveal");
 if (revealTargets.length) {

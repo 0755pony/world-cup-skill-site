@@ -17,6 +17,14 @@ export async function onRequestPost(context) {
       return json({ error: "请填写两支球队" }, 400);
     }
 
+    const turnstileSecret = context.env.TURNSTILE_SECRET_KEY;
+    if (turnstileSecret) {
+      const ok = await verifyTurnstile(turnstileSecret, body.turnstileToken, context.request);
+      if (!ok) {
+        return json({ error: "人机验证未通过,请刷新页面重试" }, 403);
+      }
+    }
+
     const skillPrompt = await loadSkillPrompt(context);
     const userPrompt = [
       `请预测这场 2026 世界杯比赛：【${stage}】${teamA} vs ${teamB}。`,
@@ -71,6 +79,26 @@ async function loadSkillPrompt(context) {
   }
 
   return assetResponse.text();
+}
+
+async function verifyTurnstile(secret, token, request) {
+  if (!token) return false;
+  try {
+    const form = new FormData();
+    form.append("secret", secret);
+    form.append("response", token);
+    const ip = request.headers.get("CF-Connecting-IP");
+    if (ip) form.append("remoteip", ip);
+
+    const resp = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: form
+    });
+    const data = await resp.json();
+    return data.success === true;
+  } catch {
+    return false;
+  }
 }
 
 function parseModelJson(content) {

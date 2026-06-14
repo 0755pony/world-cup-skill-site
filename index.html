@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>绿茵神算</title>
     <link rel="icon" href="/assets/brand/fifa-logo.png" />
-    <link rel="stylesheet" href="/styles.css?v=20260614-feat3" />
+    <meta name="turnstile-sitekey" content="__TURNSTILE_SITE_KEY__" />
+    <link rel="stylesheet" href="/styles.css?v=20260614-feat6" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTS&render=explicit" async defer></script>
   </head>
   <body>
     <nav class="site-nav" aria-label="主导航">
@@ -114,6 +116,8 @@
               <span>补充信息</span>
               <textarea id="notes" name="notes" rows="4" placeholder="可选：例如伤停、比赛城市、你想强调的分析角度"></textarea>
             </label>
+
+            <div class="ts-widget" id="ts"></div>
 
             <div class="actions">
               <button type="submit" id="submit-button">开始预测</button>
