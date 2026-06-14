@@ -14,18 +14,25 @@
             <div>
               <p class="eyebrow">2026 World Cup</p>
               <h1>绿茵神算</h1>
+              <p class="subtitle">基于开源 skill.md 的 48 队世界杯预测引擎</p>
             </div>
             <div class="status" id="status">待预测</div>
           </header>
+
+          <div class="quick-matches" aria-label="快捷比赛">
+            <button type="button" class="chip" data-stage="小组赛" data-team-a="墨西哥" data-team-b="南非">揭幕战</button>
+            <button type="button" class="chip" data-stage="小组赛" data-team-a="巴西" data-team-b="摩洛哥">强强对话</button>
+            <button type="button" class="chip" data-stage="小组赛" data-team-a="日本" data-team-b="荷兰">黑马试金石</button>
+          </div>
 
           <form id="prediction-form" class="controls">
             <label>
               <span>比赛阶段</span>
               <select id="stage" name="stage">
                 <option>小组赛</option>
-                <option>32强淘汰赛</option>
-                <option>16强淘汰赛</option>
-                <option>四分之一决赛</option>
+                <option>32 强</option>
+                <option>16 强</option>
+                <option>8 强</option>
                 <option>半决赛</option>
                 <option>决赛</option>
               </select>
@@ -52,9 +59,27 @@
               <button type="button" id="swap-button" class="secondary" aria-label="交换球队">交换</button>
             </div>
           </form>
+
+          <div class="method-card">
+            <h2>四层约束</h2>
+            <div class="method-grid">
+              <span>资料库 · 48 队</span>
+              <span>方法论 · 4 维权重</span>
+              <span>输出契约 · JSON</span>
+              <span>每日情报 · 可覆盖</span>
+            </div>
+          </div>
         </div>
 
         <section class="result-panel" aria-live="polite">
+          <div class="result-header">
+            <div>
+              <p class="eyebrow">Prediction Card</p>
+              <h2>预测结果</h2>
+            </div>
+            <a href="https://github.com/TradingAi666/worldcup2026-prediction-skill" target="_blank" rel="noreferrer">原项目</a>
+          </div>
+
           <div class="scoreline">
             <div>
               <span id="team-a-label">墨西哥</span>
@@ -81,6 +106,21 @@
             </div>
           </div>
 
+          <div class="contract-panel">
+            <h2>输出契约校验</h2>
+            <div id="contract-checks" class="contract-checks">
+              <span>等待 JSON</span>
+            </div>
+          </div>
+
+          <div class="weights-panel">
+            <h2>方法论权重</h2>
+            <div class="weight-row"><span>近期状态</span><strong>40%</strong></div>
+            <div class="weight-row"><span>球队硬实力</span><strong>30%</strong></div>
+            <div class="weight-row"><span>历史交锋</span><strong>15%</strong></div>
+            <div class="weight-row"><span>情境因素</span><strong>15%</strong></div>
+          </div>
+
           <div class="content-block">
             <h2>关键因素</h2>
             <ul id="key-factors">
@@ -103,6 +143,14 @@
             <pre id="raw-json">{}</pre>
           </details>
         </section>
+
+        <section class="groups-panel">
+          <div>
+            <p class="eyebrow">Groups</p>
+            <h2>12 组完整分组</h2>
+          </div>
+          <div id="groups-grid" class="groups-grid"></div>
+        </section>
       </section>
     </main>
 
@@ -112,17 +160,49 @@
       <option value="韩国"></option>
       <option value="捷克"></option>
       <option value="加拿大"></option>
+      <option value="波黑"></option>
+      <option value="卡塔尔"></option>
+      <option value="瑞士"></option>
       <option value="巴西"></option>
       <option value="摩洛哥"></option>
+      <option value="海地"></option>
+      <option value="苏格兰"></option>
       <option value="美国"></option>
+      <option value="巴拉圭"></option>
+      <option value="澳大利亚"></option>
+      <option value="土耳其"></option>
       <option value="德国"></option>
+      <option value="库拉索"></option>
+      <option value="科特迪瓦"></option>
+      <option value="厄瓜多尔"></option>
       <option value="荷兰"></option>
       <option value="日本"></option>
+      <option value="瑞典"></option>
+      <option value="突尼斯"></option>
+      <option value="比利时"></option>
+      <option value="埃及"></option>
+      <option value="伊朗"></option>
+      <option value="新西兰"></option>
       <option value="西班牙"></option>
+      <option value="佛得角"></option>
+      <option value="沙特"></option>
+      <option value="乌拉圭"></option>
       <option value="法国"></option>
+      <option value="塞内加尔"></option>
+      <option value="伊拉克"></option>
+      <option value="挪威"></option>
       <option value="阿根廷"></option>
+      <option value="阿尔及利亚"></option>
+      <option value="奥地利"></option>
+      <option value="约旦"></option>
       <option value="葡萄牙"></option>
+      <option value="刚果金"></option>
+      <option value="乌兹别克斯坦"></option>
+      <option value="哥伦比亚"></option>
       <option value="英格兰"></option>
+      <option value="克罗地亚"></option>
+      <option value="加纳"></option>
+      <option value="巴拿马"></option>
     </datalist>
     <script src="/app.js" type="module"></script>
   </body>
