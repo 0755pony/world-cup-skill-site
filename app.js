@@ -2,24 +2,15 @@ const form = document.querySelector("#prediction-form");
 const statusEl = document.querySelector("#status");
 const submitButton = document.querySelector("#submit-button");
 const swapButton = document.querySelector("#swap-button");
-const saveContentButton = document.querySelector("#save-content-button");
-const resetContentButton = document.querySelector("#reset-content-button");
-const contentStorageKey = "worldcup-page-content";
 
 const fields = {
   stage: document.querySelector("#stage"),
   teamA: document.querySelector("#team-a"),
   teamB: document.querySelector("#team-b"),
-  notes: document.querySelector("#notes"),
-  editTitle: document.querySelector("#edit-title"),
-  editSubtitle: document.querySelector("#edit-subtitle"),
-  editBrief: document.querySelector("#edit-brief")
+  notes: document.querySelector("#notes")
 };
 
 const output = {
-  brandTitle: document.querySelector("#brand-title"),
-  brandSubtitle: document.querySelector("#brand-subtitle"),
-  briefText: document.querySelector("#brief-text"),
   teamALabel: document.querySelector("#team-a-label"),
   teamBLabel: document.querySelector("#team-b-label"),
   teamAProb: document.querySelector("#team-a-prob"),
@@ -30,17 +21,10 @@ const output = {
   keyFactors: document.querySelector("#key-factors"),
   analysis: document.querySelector("#analysis"),
   players: document.querySelector("#players"),
-  rawJson: document.querySelector("#raw-json"),
   contractChecks: document.querySelector("#contract-checks"),
   groupsGrid: document.querySelector("#groups-grid"),
   teamAPreview: document.querySelector("#team-a-preview"),
   teamBPreview: document.querySelector("#team-b-preview")
-};
-
-const defaultPageContent = {
-  title: "绿茵神算",
-  subtitle: "基于开源 skill.md 的 48 队世界杯预测引擎",
-  brief: "选择比赛后生成预测卡。所有结果仅供娱乐和球迷讨论，不提供任何投注建议。"
 };
 
 const teamFlags = {
@@ -127,8 +111,6 @@ swapButton.addEventListener("click", () => {
 
 fields.teamA.addEventListener("input", renderLabels);
 fields.teamB.addEventListener("input", renderLabels);
-saveContentButton.addEventListener("click", savePageContent);
-resetContentButton.addEventListener("click", resetPageContent);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -184,7 +166,6 @@ function renderResult(data) {
   output.predictedScore.textContent = data.predictedScore || "-";
   output.confidence.textContent = data.confidence || "--";
   output.analysis.textContent = data.analysis || "暂无分析";
-  output.rawJson.textContent = JSON.stringify(data, null, 2);
   renderContractChecks(data);
 
   output.keyFactors.replaceChildren(
@@ -213,40 +194,6 @@ function renderResult(data) {
       return item;
     })
   );
-}
-
-function getPageContent() {
-  try {
-    return { ...defaultPageContent, ...JSON.parse(localStorage.getItem(contentStorageKey) || "{}") };
-  } catch {
-    return defaultPageContent;
-  }
-}
-
-function applyPageContent(content) {
-  output.brandTitle.textContent = content.title || defaultPageContent.title;
-  output.brandSubtitle.textContent = content.subtitle || defaultPageContent.subtitle;
-  output.briefText.textContent = content.brief || defaultPageContent.brief;
-  fields.editTitle.value = output.brandTitle.textContent;
-  fields.editSubtitle.value = output.brandSubtitle.textContent;
-  fields.editBrief.value = output.briefText.textContent;
-}
-
-function savePageContent() {
-  const content = {
-    title: fields.editTitle.value.trim() || defaultPageContent.title,
-    subtitle: fields.editSubtitle.value.trim() || defaultPageContent.subtitle,
-    brief: fields.editBrief.value.trim() || defaultPageContent.brief
-  };
-  localStorage.setItem(contentStorageKey, JSON.stringify(content));
-  applyPageContent(content);
-  setStatus("已保存");
-}
-
-function resetPageContent() {
-  localStorage.removeItem(contentStorageKey);
-  applyPageContent(defaultPageContent);
-  setStatus("已恢复");
 }
 
 function setTeamLabel(target, name) {
@@ -345,4 +292,3 @@ function renderGroups() {
 
 renderLabels();
 renderGroups();
-applyPageContent(getPageContent());

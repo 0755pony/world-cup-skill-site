@@ -171,31 +171,6 @@ h2 {
   color: var(--accent-strong);
 }
 
-.editor-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #ffffff;
-  margin-bottom: 18px;
-  padding: 12px 14px;
-}
-
-.editor-card summary {
-  color: var(--accent);
-  font-weight: 800;
-}
-
-.editor-fields {
-  display: grid;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.editor-actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
-}
-
 label {
   display: grid;
   gap: 8px;
@@ -544,27 +519,6 @@ li + li {
   font-size: 13px;
 }
 
-.raw-box {
-  margin-top: 20px;
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
-}
-
-summary {
-  cursor: pointer;
-  color: var(--accent);
-  font-weight: 800;
-}
-
-pre {
-  overflow: auto;
-  max-height: 360px;
-  border-radius: 8px;
-  background: #111711;
-  color: #e8f4e8;
-  padding: 16px;
-}
-
 .groups-panel {
   grid-column: 2 / 3;
   padding: clamp(20px, 4vw, 28px);
@@ -655,10 +609,6 @@ pre {
   }
 
   .actions {
-    grid-template-columns: 1fr;
-  }
-
-  .editor-actions {
     grid-template-columns: 1fr;
   }
 
