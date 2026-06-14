@@ -99,6 +99,7 @@ document.querySelectorAll(".chip").forEach((button) => {
     fields.teamA.value = button.dataset.teamA;
     fields.teamB.value = button.dataset.teamB;
     renderLabels();
+    updateQuickMatchState(button);
   });
 });
 
@@ -155,6 +156,18 @@ function renderLabels() {
   setTeamLabel(output.teamALabel, fields.teamA.value || "球队 A");
   setTeamLabel(output.teamBLabel, fields.teamB.value || "球队 B");
   renderSelectedMatch();
+  updateQuickMatchState();
+}
+
+function updateQuickMatchState(activeButton = null) {
+  document.querySelectorAll(".chip").forEach((button) => {
+    const isActive =
+      button === activeButton ||
+      (button.dataset.stage === fields.stage.value &&
+        button.dataset.teamA === fields.teamA.value &&
+        button.dataset.teamB === fields.teamB.value);
+    button.classList.toggle("is-active", isActive);
+  });
 }
 
 function renderResult(data) {

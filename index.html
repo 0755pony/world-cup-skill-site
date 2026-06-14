@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>绿茵神算</title>
     <link rel="icon" href="/assets/brand/fifa-logo.png" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css?v=20260614-design" />
   </head>
   <body>
     <main class="app-shell">
@@ -22,6 +22,12 @@
             </div>
             <div class="status" id="status">待预测</div>
           </header>
+
+          <div class="signal-strip" aria-label="预测参数">
+            <span>48 队资料库</span>
+            <span>4 维权重</span>
+            <span>实时补充</span>
+          </div>
 
           <div class="quick-matches" aria-label="快捷比赛">
             <button type="button" class="chip" data-stage="小组赛" data-team-a="墨西哥" data-team-b="南非">揭幕战</button>
@@ -91,7 +97,7 @@
           </div>
 
           <section class="brief-panel">
-            <h2>页面公告</h2>
+            <h2>赛前提示</h2>
             <p id="brief-text">选择比赛后生成预测卡。所有结果仅供娱乐和球迷讨论，不提供任何投注建议。</p>
           </section>
 
@@ -215,6 +221,6 @@
       <option value="加纳"></option>
       <option value="巴拿马"></option>
     </datalist>
-    <script src="/app.js?v=20260614-cleanup" type="module"></script>
+    <script src="/app.js?v=20260614-design" type="module"></script>
   </body>
 </html>
