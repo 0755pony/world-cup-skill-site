@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>绿茵神算</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="世界杯预测">
+        <div class="match-panel">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">2026 World Cup</p>
+              <h1>绿茵神算</h1>
+            </div>
+            <div class="status" id="status">待预测</div>
+          </header>
+
+          <form id="prediction-form" class="controls">
+            <label>
+              <span>比赛阶段</span>
+              <select id="stage" name="stage">
+                <option>小组赛</option>
+                <option>32强淘汰赛</option>
+                <option>16强淘汰赛</option>
+                <option>四分之一决赛</option>
+                <option>半决赛</option>
+                <option>决赛</option>
+              </select>
+            </label>
+
+            <div class="team-grid">
+              <label>
+                <span>球队 A</span>
+                <input id="team-a" name="teamA" list="teams" value="墨西哥" autocomplete="off" />
+              </label>
+              <label>
+                <span>球队 B</span>
+                <input id="team-b" name="teamB" list="teams" value="南非" autocomplete="off" />
+              </label>
+            </div>
+
+            <label>
+              <span>补充信息</span>
+              <textarea id="notes" name="notes" rows="4" placeholder="可选：例如伤停、比赛城市、你想强调的分析角度"></textarea>
+            </label>
+
+            <div class="actions">
+              <button type="submit" id="submit-button">开始预测</button>
+              <button type="button" id="swap-button" class="secondary" aria-label="交换球队">交换</button>
+            </div>
+          </form>
+        </div>
+
+        <section class="result-panel" aria-live="polite">
+          <div class="scoreline">
+            <div>
+              <span id="team-a-label">墨西哥</span>
+              <strong id="team-a-prob">--</strong>
+            </div>
+            <div class="score">
+              <span id="predicted-score">-</span>
+              <small>预测比分</small>
+            </div>
+            <div>
+              <span id="team-b-label">南非</span>
+              <strong id="team-b-prob">--</strong>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div>
+              <span>平局</span>
+              <strong id="draw-prob">--</strong>
+            </div>
+            <div>
+              <span>置信度</span>
+              <strong id="confidence">--</strong>
+            </div>
+          </div>
+
+          <div class="content-block">
+            <h2>关键因素</h2>
+            <ul id="key-factors">
+              <li>输入比赛后生成</li>
+            </ul>
+          </div>
+
+          <div class="content-block">
+            <h2>综合分析</h2>
+            <p id="analysis">预测结果会严格按照 skill.md 的 JSON 结构生成，并在这里转成可读卡片。</p>
+          </div>
+
+          <div class="content-block">
+            <h2>关键先生</h2>
+            <div id="players" class="players"></div>
+          </div>
+
+          <details class="raw-box">
+            <summary>查看原始 JSON</summary>
+            <pre id="raw-json">{}</pre>
+          </details>
+        </section>
+      </section>
+    </main>
+
+    <datalist id="teams">
+      <option value="墨西哥"></option>
+      <option value="南非"></option>
+      <option value="韩国"></option>
+      <option value="捷克"></option>
+      <option value="加拿大"></option>
+      <option value="巴西"></option>
+      <option value="摩洛哥"></option>
+      <option value="美国"></option>
+      <option value="德国"></option>
+      <option value="荷兰"></option>
+      <option value="日本"></option>
+      <option value="西班牙"></option>
+      <option value="法国"></option>
+      <option value="阿根廷"></option>
+      <option value="葡萄牙"></option>
+      <option value="英格兰"></option>
+    </datalist>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
