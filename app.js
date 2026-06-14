@@ -24,7 +24,8 @@ const output = {
   contractChecks: document.querySelector("#contract-checks"),
   groupsGrid: document.querySelector("#groups-grid"),
   teamAPreview: document.querySelector("#team-a-preview"),
-  teamBPreview: document.querySelector("#team-b-preview")
+  teamBPreview: document.querySelector("#team-b-preview"),
+  briefText: document.querySelector("#brief-text")
 };
 
 const teamFlags = {
@@ -130,6 +131,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   setLoading(true);
+  clearError();
 
   try {
     const response = await fetch("/api/predict", {
@@ -147,7 +149,8 @@ form.addEventListener("submit", async (event) => {
     setStatus("已完成");
   } catch (error) {
     setStatus("出错", "error");
-    output.analysis.textContent = error.message;
+    showError();
+    console.error("[predict]", error);
   } finally {
     setLoading(false);
   }
@@ -208,6 +211,16 @@ function renderResult(data) {
       return item;
     })
   );
+
+  animateResult();
+}
+
+function animateResult() {
+  const panel = document.querySelector(".result-panel");
+  if (!panel) return;
+  panel.classList.remove("show-result");
+  void panel.offsetWidth;
+  panel.classList.add("show-result");
 }
 
 function setTeamLabel(target, name) {
@@ -286,6 +299,17 @@ function setStatus(text, state = "") {
   statusEl.className = `status ${state}`.trim();
 }
 
+function showError() {
+  if (output.briefText) {
+    output.briefText.textContent = "预测没能生成,稍等片刻再试一次。如果多次失败,可能是网络或服务繁忙。";
+    output.briefText.closest(".brief-panel")?.classList.add("is-error");
+  }
+}
+
+function clearError() {
+  output.briefText?.closest(".brief-panel")?.classList.remove("is-error");
+}
+
 function renderGroups() {
   output.groupsGrid.replaceChildren(
     ...groups.map(([name, teams]) => {
@@ -306,3 +330,19 @@ function renderGroups() {
 
 renderLabels();
 renderGroups();
+
+const revealTargets = document.querySelectorAll(".reveal");
+if (revealTargets.length) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  revealTargets.forEach((el) => io.observe(el));
+}
