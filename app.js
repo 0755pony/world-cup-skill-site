@@ -23,7 +23,60 @@ const output = {
   players: document.querySelector("#players"),
   rawJson: document.querySelector("#raw-json"),
   contractChecks: document.querySelector("#contract-checks"),
-  groupsGrid: document.querySelector("#groups-grid")
+  groupsGrid: document.querySelector("#groups-grid"),
+  teamAPreview: document.querySelector("#team-a-preview"),
+  teamBPreview: document.querySelector("#team-b-preview")
+};
+
+const teamFlags = {
+  "墨西哥": "mx",
+  "南非": "za",
+  "韩国": "kr",
+  "捷克": "cz",
+  "加拿大": "ca",
+  "波黑": "ba",
+  "卡塔尔": "qa",
+  "瑞士": "ch",
+  "巴西": "br",
+  "摩洛哥": "ma",
+  "海地": "ht",
+  "苏格兰": "gb-sct",
+  "美国": "us",
+  "巴拉圭": "py",
+  "澳大利亚": "au",
+  "土耳其": "tr",
+  "德国": "de",
+  "库拉索": "cw",
+  "科特迪瓦": "ci",
+  "厄瓜多尔": "ec",
+  "荷兰": "nl",
+  "日本": "jp",
+  "瑞典": "se",
+  "突尼斯": "tn",
+  "比利时": "be",
+  "埃及": "eg",
+  "伊朗": "ir",
+  "新西兰": "nz",
+  "西班牙": "es",
+  "佛得角": "cv",
+  "沙特": "sa",
+  "乌拉圭": "uy",
+  "法国": "fr",
+  "塞内加尔": "sn",
+  "伊拉克": "iq",
+  "挪威": "no",
+  "阿根廷": "ar",
+  "阿尔及利亚": "dz",
+  "奥地利": "at",
+  "约旦": "jo",
+  "葡萄牙": "pt",
+  "刚果金": "cd",
+  "乌兹别克斯坦": "uz",
+  "哥伦比亚": "co",
+  "英格兰": "gb-eng",
+  "克罗地亚": "hr",
+  "加纳": "gh",
+  "巴拿马": "pa"
 };
 
 const groups = [
@@ -100,13 +153,14 @@ form.addEventListener("submit", async (event) => {
 });
 
 function renderLabels() {
-  output.teamALabel.textContent = fields.teamA.value || "球队 A";
-  output.teamBLabel.textContent = fields.teamB.value || "球队 B";
+  setTeamLabel(output.teamALabel, fields.teamA.value || "球队 A");
+  setTeamLabel(output.teamBLabel, fields.teamB.value || "球队 B");
+  renderSelectedMatch();
 }
 
 function renderResult(data) {
-  output.teamALabel.textContent = data.teamA?.name || fields.teamA.value;
-  output.teamBLabel.textContent = data.teamB?.name || fields.teamB.value;
+  setTeamLabel(output.teamALabel, data.teamA?.name || fields.teamA.value);
+  setTeamLabel(output.teamBLabel, data.teamB?.name || fields.teamB.value);
   output.teamAProb.textContent = formatPercent(data.teamA?.winProb);
   output.teamBProb.textContent = formatPercent(data.teamB?.winProb);
   output.drawProb.textContent = formatPercent(data.draw);
@@ -142,6 +196,42 @@ function renderResult(data) {
       return item;
     })
   );
+}
+
+function setTeamLabel(target, name) {
+  target.replaceChildren(createTeamBadge(name, "team-badge stacked"));
+}
+
+function renderSelectedMatch() {
+  output.teamAPreview.replaceChildren(createTeamBadge(fields.teamA.value || "球队 A", "team-badge compact"));
+  output.teamBPreview.replaceChildren(createTeamBadge(fields.teamB.value || "球队 B", "team-badge compact"));
+}
+
+function createTeamBadge(name, className = "team-badge") {
+  const badge = document.createElement("span");
+  badge.className = className;
+
+  const code = teamFlags[name];
+  if (code) {
+    const flag = document.createElement("img");
+    flag.className = "flag";
+    flag.src = `/assets/flags/${code}.png`;
+    flag.alt = `${name} 国旗`;
+    flag.loading = "lazy";
+    flag.decoding = "async";
+    flag.addEventListener("error", () => {
+      flag.remove();
+      badge.classList.add("no-flag");
+    });
+    badge.append(flag);
+  } else {
+    badge.classList.add("no-flag");
+  }
+
+  const text = document.createElement("span");
+  text.textContent = name;
+  badge.append(text);
+  return badge;
 }
 
 function renderContractChecks(data) {
@@ -191,8 +281,11 @@ function renderGroups() {
       card.className = "group-card";
       const title = document.createElement("strong");
       title.textContent = `${name} 组`;
-      const list = document.createElement("p");
-      list.textContent = teams.join(" · ");
+      const list = document.createElement("div");
+      list.className = "group-team-list";
+      teams.forEach((team) => {
+        list.append(createTeamBadge(team, "team-badge group-team"));
+      });
       card.append(title, list);
       return card;
     })

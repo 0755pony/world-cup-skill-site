@@ -191,6 +191,23 @@ textarea:focus {
   gap: 12px;
 }
 
+.match-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.match-preview > span {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+}
+
 .actions {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -299,6 +316,50 @@ button.secondary:hover {
 .metrics span {
   color: var(--muted);
   font-size: 14px;
+}
+
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.team-badge .flag {
+  width: 38px;
+  height: 28px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(24, 32, 24, 0.16);
+  border-radius: 4px;
+  object-fit: cover;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(28, 48, 32, 0.10);
+}
+
+.team-badge.stacked {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.team-badge.stacked .flag {
+  width: 64px;
+  height: 44px;
+}
+
+.team-badge.compact {
+  min-width: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.team-badge.compact span:last-child,
+.team-badge.group-team span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .scoreline strong {
@@ -470,11 +531,25 @@ pre {
   color: var(--accent);
 }
 
-.group-card p {
-  margin: 8px 0 0;
+.group-team-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.team-badge.group-team {
+  min-width: 0;
+  width: 100%;
+  border-radius: 8px;
+  background: #fbfcf8;
+  padding: 7px 8px;
   color: var(--muted);
-  line-height: 1.6;
   font-size: 14px;
+}
+
+.team-badge.group-team .flag {
+  width: 30px;
+  height: 22px;
 }
 
 @media (max-width: 860px) {
@@ -497,6 +572,7 @@ pre {
   }
 
   .team-grid,
+  .match-preview,
   .players,
   .metrics,
   .scoreline {
