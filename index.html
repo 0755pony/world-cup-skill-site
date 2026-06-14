@@ -16,8 +16,8 @@
               <img class="brand-logo" src="/assets/brand/fifa-logo.png" alt="FIFA World Cup trophy logo" />
               <div>
                 <p class="eyebrow">2026 World Cup</p>
-                <h1>绿茵神算</h1>
-                <p class="subtitle">基于开源 skill.md 的 48 队世界杯预测引擎</p>
+                <h1 id="brand-title">绿茵神算</h1>
+                <p class="subtitle" id="brand-subtitle">基于开源 skill.md 的 48 队世界杯预测引擎</p>
               </div>
             </div>
             <div class="status" id="status">待预测</div>
@@ -28,6 +28,28 @@
             <button type="button" class="chip" data-stage="小组赛" data-team-a="巴西" data-team-b="摩洛哥">强强对话</button>
             <button type="button" class="chip" data-stage="小组赛" data-team-a="日本" data-team-b="荷兰">黑马试金石</button>
           </div>
+
+          <details class="editor-card">
+            <summary>编辑页面内容</summary>
+            <div class="editor-fields">
+              <label>
+                <span>页面标题</span>
+                <input id="edit-title" type="text" maxlength="12" />
+              </label>
+              <label>
+                <span>副标题</span>
+                <textarea id="edit-subtitle" rows="2" maxlength="80"></textarea>
+              </label>
+              <label>
+                <span>展示公告</span>
+                <textarea id="edit-brief" rows="3" maxlength="160"></textarea>
+              </label>
+              <div class="editor-actions">
+                <button type="button" id="save-content-button">保存并展示</button>
+                <button type="button" id="reset-content-button" class="secondary">恢复默认</button>
+              </div>
+            </div>
+          </details>
 
           <form id="prediction-form" class="controls">
             <label>
@@ -89,6 +111,11 @@
             </div>
             <a href="https://github.com/TradingAi666/worldcup2026-prediction-skill" target="_blank" rel="noreferrer">原项目</a>
           </div>
+
+          <section class="brief-panel">
+            <h2>页面公告</h2>
+            <p id="brief-text">选择比赛后生成预测卡。所有结果仅供娱乐和球迷讨论，不提供任何投注建议。</p>
+          </section>
 
           <div class="scoreline">
             <div>

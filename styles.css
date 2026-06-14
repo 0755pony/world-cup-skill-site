@@ -72,14 +72,14 @@ textarea {
 
 .brand-lockup {
   display: grid;
-  grid-template-columns: 78px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 14px;
   align-items: center;
 }
 
 .brand-logo {
-  width: 78px;
-  height: 116px;
+  width: 70px;
+  height: 104px;
   object-fit: contain;
   border-radius: 8px;
   background: #ffffff;
@@ -105,9 +105,10 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: clamp(32px, 5vw, 52px);
-  line-height: 1;
+  font-size: clamp(32px, 4vw, 42px);
+  line-height: 0.96;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .subtitle {
@@ -168,6 +169,31 @@ h2 {
 .chip:hover {
   background: #eef7ef;
   color: var(--accent-strong);
+}
+
+.editor-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+}
+
+.editor-card summary {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.editor-fields {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.editor-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
 }
 
 label {
@@ -308,6 +334,20 @@ button.secondary:hover {
   color: var(--accent);
   font-weight: 800;
   text-decoration: none;
+}
+
+.brief-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcf8;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.brief-panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .scoreline {
@@ -598,12 +638,12 @@ pre {
   }
 
   .brand-lockup {
-    grid-template-columns: 62px minmax(0, 1fr);
+    grid-template-columns: 56px minmax(0, 1fr);
   }
 
   .brand-logo {
-    width: 62px;
-    height: 92px;
+    width: 56px;
+    height: 84px;
   }
 
   .team-grid,
@@ -615,6 +655,10 @@ pre {
   }
 
   .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-actions {
     grid-template-columns: 1fr;
   }
 
